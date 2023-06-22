@@ -1,0 +1,24 @@
+@mixin ButtonCart(
+    
+    $width,
+    $font,
+    $weight,
+    $color,
+    $bgColor,
+    $radius,
+    $border,
+    $cursor
+
+ 
+)
+{
+    width: $width;
+    font-family: $font;
+    font-weight: $weight;
+    color: $color;
+    background-color: $bgColor;
+    border-radius: $radius;
+    border: $border;
+    cursor: $cursor;
+
+}

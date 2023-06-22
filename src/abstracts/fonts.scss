@@ -1,0 +1,18 @@
+$Montserrat :'Montserrat', sans-serif;
+$Fraunces : 'Fraunces', serif;
+@mixin setFonts(
+    $fonts , 
+    $weight ,
+    $size , 
+    $color ,
+    $letterspace,
+    $line-height
+ )
+ {
+    font-family: $fonts;
+    font-weight: $weight;
+    font-size: $size;
+    color: $color;
+    letter-spacing: $letterspace;
+    line-height: $line-height;
+ }

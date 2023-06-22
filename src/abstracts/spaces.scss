@@ -1,0 +1,5 @@
+@mixin MarginAndPadding($padding,$margin) {
+    
+    padding: $padding;
+    margin: $margin;
+}

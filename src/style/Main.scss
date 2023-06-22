@@ -1,0 +1,383 @@
+@use "../abstracts/colors.scss" as color;
+@use "../abstracts/fonts.scss" as font;
+@use "../abstracts/spaces.scss" as space;
+@use "../abstracts/button.scss" as button;
+
+* {
+  @include space.MarginAndPadding(0, 0);
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.product--section {
+  background-color: color.$Cream;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.product-wrapper {
+  width: 600px;
+  height: 430px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  background-color: color.$white;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 2px 15px 50px color.$Blacky ;
+  animation: 1s  container-animation ease forwards;
+  position: relative;
+}
+
+.product-image-cont {
+  z-index: 2;
+    background-color: rgba(255, 255, 255, 0.402);
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    animation : 1s image-animation  ease forwards;
+  .product-img {
+    width: 100%;
+    image-resolution: 300dpi;
+    image-rendering: optimizeQuality;
+    object-fit: contain;
+    vertical-align: middle;
+    transition: all  1s ease-in-out;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    &:hover {
+        overflow: auto;
+        transform: scale(1.2);
+        mix-blend-mode:multiply;
+        filter: brightness(110%);
+        opacity: 0.8;
+        cursor: pointer;
+    }
+  }
+}
+.discount-container{
+  position: absolute;
+  background-color: color.$lightcyan;
+  left: -50px;
+  z-index: 5;
+  border-radius: 20px;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  animation: 1.5s h2-animation ease forwards;
+  .dicounted-item{
+    @include space.MarginAndPadding(15px, 0);
+    cursor: pointer;
+    i {
+      @include space.MarginAndPadding(0px, 0px 0px 0px 0px);
+      color: color.$Greentea;
+      vertical-align: middle;
+      font-size: 15px
+    }
+    @include font.setFonts(
+      font.$Fraunces,
+      600,
+      1.1rem,
+      color.$Cream,
+      0px,
+      0px
+    );
+    .discount {
+      @include font.setFonts(
+      font.$Fraunces,
+      600,
+      1.1rem,
+      color.$Greentea,
+      0px,
+      0px
+    );
+    }
+  }
+
+}
+.product-context-cont {
+  @include space.MarginAndPadding(30px, 0);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+
+  .content {
+    width: 90%;
+    h3 {
+      animation: 1.5s h2-animation ease forwards;
+      text-transform: uppercase;
+      @include font.setFonts(
+        font.$Montserrat,
+        600,
+        0.8rem,
+        color.$Darkgrayish,
+        7px,
+        10px
+      );
+    }
+    h1 {
+        animation : 1.5s  h1-animation ease forwards;
+      padding-block: 20px;
+      width: 100%;
+      @include font.setFonts(
+        font.$Fraunces,
+        600,
+        2rem,
+        color.$Verydark,
+        0px,
+        40px
+      );
+    }
+    p {
+        animation : 1.5s paragraph-animation  ease forwards;
+      width: 100%;
+      @include font.setFonts(
+        font.$Montserrat,
+        500,
+        0.9rem,
+        color.$Darkgrayish,
+        0px,
+        16px
+      );
+    }
+  }
+
+  .prices {
+    animation :  1.5s pricing-animation  ease forwards;
+    @include space.MarginAndPadding(20px 0px 25px 0px, 0px);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    h2 {
+      cursor: pointer;
+      @include font.setFonts(
+        font.$Fraunces,
+        600,
+        2rem,
+        color.$Darkcyan,
+        0px,
+        0px
+      );
+    }
+
+    span {
+      @include font.setFonts(
+        font.$Montserrat,
+        500,
+        0.8rem,
+        color.$Darkgrayish,
+        0px,
+        0px
+      );
+    }
+  }
+
+  .button-cont {
+    width: 90%;
+    animation :  1.6s button-animation ease forwards;
+    button {
+      i {
+        @include space.MarginAndPadding(0px, 0px 10px 0px 0px);
+      }
+
+      @include button.ButtonCart(
+        100%,
+        font.$Montserrat,
+        600,
+        color.$white,
+        color.$Darkcyan,
+        8px,
+        none,
+        pointer
+      );
+
+      @include space.MarginAndPadding(15px, 0px);
+      transition: all 1s ease-in-out;
+      font-size: 0.8rem;
+      outline: none;
+
+      &:hover {
+        background-color: color.$Darkencyan;
+      }
+    }
+  }
+}
+@keyframes button-animation {
+    
+    0%{
+        
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100%{
+ 
+        opacity: 1;
+        transform: translateY(-0%);
+    }
+}
+@keyframes pricing-animation {
+    
+  0%{
+      
+      opacity: 0;
+      transform: translateY(100%);
+  }
+  100%{
+
+      opacity: 1;
+      transform: translateY(-0%);
+  }
+}
+@keyframes paragraph-animation {
+    
+  0%{
+      
+      opacity: 0;
+      transform: translateY(100%);
+  }
+  100%{
+
+      opacity: 1;
+      transform: translateY(-0%);
+  }
+}
+@keyframes h1-animation {
+    
+  0%{
+      
+      opacity: 0;
+      transform: translateY(50%);
+  }
+  100%{
+
+      opacity: 1;
+      transform: translateY(-0%);
+  }
+}
+@keyframes h2-animation {
+    
+  0%{
+      
+      opacity: 0;
+      transform: translateX(-50%);
+  }
+  100%{
+
+      opacity: 1;
+      transform: translateX(-0%);
+  }
+}
+@keyframes image-animation {
+    
+    0%{
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+    50%{
+        opacity: 0.5;
+        transform: translateX(-20%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+@keyframes container-animation {
+    
+    0%{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100%{
+
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+@media (max-width: 600px) {
+  .discount-container{
+
+    left: -90px;
+  }
+  .product--section {
+    @include space.MarginAndPadding(10px 0px 10px 0px, 0px);
+  }
+
+  .product-wrapper {
+    grid-template-columns: 1fr;
+    width: 80%;
+    height: 100%;
+  }
+
+  .product-image-cont {
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+    .product-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+  }
+
+  .product-context-cont {
+    width: 80%;
+    padding: 50px;
+  }
+}
+
+@media (max-width: 376px) {
+  .product-wrapper {
+    grid-template-columns: 1fr;
+    width: 90%;
+    height: 100%;
+  }
+
+  .product-image-cont {
+    width: 100%;
+
+    .product-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .product-context-cont {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .product-context-cont {
+    @include space.MarginAndPadding(25px, 0);
+    width: 90%;
+
+    .content {
+      h1 {
+        font-size: 1.8rem;
+      }
+      p{
+        line-height: 20px;
+        font-size: 0.8rem;
+      }
+    }
+
+    .button-cont {
+      width: 90%;
+    }
+  }
+}
